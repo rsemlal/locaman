@@ -1,0 +1,9 @@
+# Eclipse specific
+/.settings
+/.cache
+/.classpath
+/.project
+
+# Sbt specific
+target/
+project/target/
