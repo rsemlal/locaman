@@ -5,7 +5,7 @@
  */
 object Constants {
   val organisation = "net.locaman"
-  val version = "0.1"
+  val initialVersion = "0.1"
 
   val scalaVersion = "2.11.2"
   val javaVersion = "JavaSE-1.7"
