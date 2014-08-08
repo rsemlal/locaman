@@ -11,7 +11,7 @@ object ProjectSettings {
     Project(name, file(name), settings = all)
   }
 
-  protected lazy val all = Project.defaultSettings ++ Seq(
+  protected lazy val all = Defaults.coreDefaultSettings ++ Seq(
     organization := Constants.organisation,
     version := Constants.version,
 
