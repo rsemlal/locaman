@@ -1,5 +1,5 @@
 # Eclipse specific
-.settings/
+/.settings
 /.cache
 /.classpath
 /.project
