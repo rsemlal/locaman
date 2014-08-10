@@ -4,6 +4,7 @@
  * @author rsemlal
  */
 object Constants {
+  val namePrefix = "locaman-"
   val organisation = "net.locaman"
   val initialVersion = "0.1"
 

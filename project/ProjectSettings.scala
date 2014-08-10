@@ -9,7 +9,8 @@ import com.typesafe.sbt.SbtGit._
 object ProjectSettings {
 
   def defProject(name: String) = {
-    Project(name, file(name), settings = ProjectSettings.defaults)
+    val fullName = Constants.namePrefix + name
+    Project(fullName, file(fullName), settings = ProjectSettings.defaults)
   }
 
   private lazy val defaults =
