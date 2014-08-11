@@ -2,10 +2,11 @@ package net.locaman.api.data.model
 
 import net.locaman.api.data.ifaces.IdentifiableObject
 import net.locaman.api.data.ifaces.IdentifiableObjectCompanion
+import akka.util.ByteString
 
 object AttributeValue extends IdentifiableObjectCompanion[AttributeValue] {
    final type Id = Long
-   final type Values = (Entry, Attribute, Array[Byte])
+   final type Values = (Entry, Attribute, ByteString)
 }
 
 trait AttributeValue extends IdentifiableObject {
@@ -14,5 +15,5 @@ trait AttributeValue extends IdentifiableObject {
 
   def entry: Entry
   def attribute: Attribute
-  def value: Array[Byte]
+  def value: ByteString
 }
