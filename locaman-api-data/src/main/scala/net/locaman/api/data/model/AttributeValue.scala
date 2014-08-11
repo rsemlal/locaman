@@ -5,7 +5,7 @@ import net.locaman.api.data.ifaces.IdentifiableObjectCompanion
 
 object AttributeValue extends IdentifiableObjectCompanion[AttributeValue] {
    final type Id = Long
-   final type Values = (Entry, Attribute, String)
+   final type Values = (Entry, Attribute, Array[Byte])
 }
 
 trait AttributeValue extends IdentifiableObject {
@@ -14,5 +14,5 @@ trait AttributeValue extends IdentifiableObject {
 
   def entry: Entry
   def attribute: Attribute
-  def value: String
+  def value: Array[Byte]
 }
