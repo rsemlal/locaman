@@ -12,6 +12,8 @@ object Attribute {
   case class Ref(id: String) extends LocamanObjectRef with NoParentObjectRef {
     override final val directory = Attribute.directory
   }
+
+  case class Data(ref: Ref, valueType: ValueType) extends Attribute
 }
 
 trait Attribute extends ObjectData[Attribute.Ref, ValueType :: HNil] {

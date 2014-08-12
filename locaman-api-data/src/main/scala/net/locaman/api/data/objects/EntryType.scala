@@ -10,6 +10,8 @@ object EntryType {
   case class Ref(id: String) extends LocamanObjectRef with NoParentObjectRef {
     override final val directory = EntryType.directory
   }
+
+  case class Data(ref: Ref) extends EntryType
 }
 
 trait EntryType extends ObjectData[EntryType.Ref, HNil] {

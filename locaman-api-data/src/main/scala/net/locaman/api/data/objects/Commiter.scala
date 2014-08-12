@@ -10,6 +10,8 @@ object Commiter {
   case class Ref(id: String) extends LocamanObjectRef with NoParentObjectRef {
     override final val directory = Commiter.directory
   }
+
+  case class Data(ref: Ref) extends Commiter
 }
 
 trait Commiter extends ObjectData[Commiter.Ref, HNil] {

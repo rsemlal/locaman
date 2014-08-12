@@ -12,6 +12,8 @@ object AttributeValue {
     override final val parents = Seq(entryRef, attributeRef)
     override final val directory = AttributeValue.directory
   }
+
+  case class Data(ref: Ref, value: ByteString) extends AttributeValue
 }
 
 trait AttributeValue extends ObjectData[AttributeValue.Ref, ByteString :: HNil] {

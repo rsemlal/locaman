@@ -10,6 +10,8 @@ object Entry {
     override final val parents = Seq(entryTypeRef)
     override final val directory = Entry.directory
   }
+
+  case class Data(ref: Ref) extends Entry
 }
 
 trait Entry extends ObjectData[Entry.Ref, HNil] {
