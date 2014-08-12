@@ -1,14 +1,14 @@
 package net.locaman.api.data.objects
 
 import net.locaman.api.data.core.ObjectData
-import net.locaman.api.data.core.ObjectRef
 import shapeless.HNil
 
 object Entry {
-  case class Ref(entryTypeRef: EntryType.Ref, id: String) extends ObjectRef {
-    override val domain = "http://locaman"
+  final val directory = "entry"
+
+  case class Ref(entryTypeRef: EntryType.Ref, id: String) extends LocamanObjectRef {
     override val parents = Seq(entryTypeRef)
-    override val directory = "entry_type"
+    override val directory = Entry.directory
   }
 }
 

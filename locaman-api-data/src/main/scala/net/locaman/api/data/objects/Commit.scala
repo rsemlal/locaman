@@ -2,14 +2,16 @@ package net.locaman.api.data.objects
 
 import net.locaman.api.data.core.ObjectData
 import net.locaman.api.data.core.ObjectRef
-import shapeless._
+import shapeless.{ :: => :: }
+import shapeless.HNil
 import org.joda.time.Instant
 
 object Commit {
-  case class Ref(valueRef: AttributeValue.Ref, sequenceNr: Int) extends ObjectRef {
-    override val domain = "http://locaman"
+  final val directory = "commit"
+
+  case class Ref(valueRef: AttributeValue.Ref, sequenceNr: Int) extends LocamanObjectRef {
     override val parents = Seq(valueRef)
-    override val directory = "commit"
+    override val directory = Commit.directory
     override val id = String.valueOf(sequenceNr)
   }
 

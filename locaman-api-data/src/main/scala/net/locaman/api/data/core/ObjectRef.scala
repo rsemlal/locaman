@@ -6,8 +6,8 @@ object ObjectRef {
 }
 
 trait ObjectRef {
-  def uri = s"$domain/$path"
-  def path: String = s"${parents.map(_.path).mkString("/")}/$directory/$id"
+  final def uri = s"$domain/$path"
+  final def path: String = s"${parents.map(_.path).mkString("/")}/$directory/$id"
 
   def domain:String
   def parents: Seq[ObjectRef]

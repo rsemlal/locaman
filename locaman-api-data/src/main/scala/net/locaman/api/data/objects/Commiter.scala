@@ -5,10 +5,11 @@ import net.locaman.api.data.core.ObjectRef
 import shapeless.HNil
 
 object Commiter {
-  case class Ref(id: String) extends ObjectRef {
-    override val domain = "http://locaman"
+  final val directory = "commiter"
+
+  case class Ref(id: String) extends LocamanObjectRef {
     override val parents = Nil
-    override val directory = "commiter"
+    override val directory = Commiter.directory
   }
 }
 
