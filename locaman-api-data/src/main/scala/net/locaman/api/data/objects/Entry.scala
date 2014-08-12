@@ -7,12 +7,12 @@ object Entry {
   final val directory = "entry"
 
   case class Ref(entryTypeRef: EntryType.Ref, id: String) extends LocamanObjectRef {
-    override val parents = Seq(entryTypeRef)
-    override val directory = Entry.directory
+    override final val parents = Seq(entryTypeRef)
+    override final val directory = Entry.directory
   }
 }
 
 trait Entry extends ObjectData[Entry.Ref, HNil] {
 
-  override def toHList = HNil
+  override final def toHList = HNil
 }

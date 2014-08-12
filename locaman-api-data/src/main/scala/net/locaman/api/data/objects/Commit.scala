@@ -10,9 +10,9 @@ object Commit {
   final val directory = "commit"
 
   case class Ref(valueRef: AttributeValue.Ref, sequenceNr: Int) extends LocamanObjectRef {
-    override val parents = Seq(valueRef)
-    override val directory = Commit.directory
-    override val id = String.valueOf(sequenceNr)
+    override final val parents = Seq(valueRef)
+    override final val directory = Commit.directory
+    override final val id = String.valueOf(sequenceNr)
   }
 
   object CommitType extends Enumeration {
@@ -26,5 +26,5 @@ trait Commit extends ObjectData[Commit.Ref, Commit.CommitType.CommitType :: Comm
   def commiter: Commiter.Ref
   def timestamp: Instant
 
-  override def toHList = commitType :: commiter :: timestamp :: HNil
+  override final def toHList = commitType :: commiter :: timestamp :: HNil
 }

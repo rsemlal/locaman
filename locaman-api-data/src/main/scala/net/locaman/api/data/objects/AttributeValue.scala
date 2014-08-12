@@ -9,13 +9,13 @@ object AttributeValue {
   final val directory = "attribute_value"
 
   case class Ref(entryRef: Entry.Ref, attributeRef: Attribute.Ref, id: String) extends LocamanObjectRef {
-    override val parents = Seq(entryRef, attributeRef)
-    override val directory = AttributeValue.directory
+    override final val parents = Seq(entryRef, attributeRef)
+    override final val directory = AttributeValue.directory
   }
 }
 
 trait AttributeValue extends ObjectData[AttributeValue.Ref, ByteString :: HNil] {
   def value: ByteString
 
-  override def toHList = value :: HNil
+  override final def toHList = value :: HNil
 }

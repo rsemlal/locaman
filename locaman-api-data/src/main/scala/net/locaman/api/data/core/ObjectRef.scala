@@ -9,8 +9,13 @@ trait ObjectRef {
   final def uri = s"$domain/$path"
   final def path: String = s"${parents.map(_.path).mkString("/")}/$directory/$id"
 
-  def domain:String
+  def domain: String
   def parents: Seq[ObjectRef]
   def directory: String
   def id: String
+}
+
+trait NoParentObjectRef {
+  this: ObjectRef =>
+  override final def parents = Nil
 }
