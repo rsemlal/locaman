@@ -14,7 +14,7 @@ object Commit {
     val Set, Unset = Value
   }
 
-  case class Ref(valueRef: AttributeValue.Ref, sequenceNr: Int) extends LocamanObjectRef {
+  case class Ref(valueRef: AttributeValue.Ref, sequenceNr: Int) extends ObjectRef with LocamanObjectRef {
     override final val parents = Seq(valueRef)
     override final val directory = Commit.directory
     override final val id = String.valueOf(sequenceNr)

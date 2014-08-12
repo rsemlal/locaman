@@ -6,6 +6,7 @@ object LocamanObjectRef {
   final val domain = "http://locaman"
 }
 
-trait LocamanObjectRef extends ObjectRef {
+trait LocamanObjectRef {
+  this: ObjectRef =>
   override final val domain = LocamanObjectRef.domain
 }

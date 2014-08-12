@@ -7,7 +7,7 @@ object ObjectRef {
 
 trait ObjectRef {
   final def uri = s"$domain/$path"
-  final def path: String = s"${parents.map(_.path).mkString("/")}/$directory/$id"
+  final def path: String = s"${parents.map(_.path).mkString("/")}/$directory/$id" // TODO Handle the double slash case
 
   def domain: String
   def parents: Seq[ObjectRef]
