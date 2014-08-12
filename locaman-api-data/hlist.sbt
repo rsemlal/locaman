@@ -1,0 +1,1 @@
+libraryDependencies += "com.chuusai" %% "shapeless" % "2.0.0"
