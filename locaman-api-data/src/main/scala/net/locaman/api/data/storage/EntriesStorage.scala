@@ -1,9 +1,21 @@
 package net.locaman.api.data.storage
 
+import net.locaman.api.data.core.QueryableStorage
 import net.locaman.api.data.core.Storage
+import net.locaman.api.data.core.StorageCompanion
 import net.locaman.api.data.objects.Entry
 import net.locaman.api.data.objects.EntryType
 
-trait EntriesStorage extends Storage[Entry.Ref, Entry] {
-  def list(entryType: EntryType.Ref): Seq[Entry]
+object EntriesStorage extends StorageCompanion {
+  case class Query(entryType: Option[EntryType.Ref])
+
+  class QueryBuilder(val query: Query) extends IQueryBuilder {
+    def valueType(v: EntryType.Ref) = new QueryBuilder(query.copy(entryType = Some(v)))
+  }
+}
+
+trait EntriesStorage extends Storage[Entry.Ref, Entry] with QueryableStorage[Entry] {
+  import EntriesStorage._
+  final val companion = EntriesStorage
+  protected final def newQueryBuilder = new QueryBuilder(Query(None))
 }
