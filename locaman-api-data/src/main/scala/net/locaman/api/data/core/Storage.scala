@@ -7,6 +7,6 @@ trait Storage[TRef <: ObjectRef, TData <: ObjectData[TRef, _]] {
 
   def get(ref: TRef): Option[TData]
 
-  def list: Seq[TData]
+  def all: Seq[TData]
 
 }
