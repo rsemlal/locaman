@@ -9,9 +9,10 @@ import shapeless.HNil
 object AttributeValue {
   final val directory = "attribute_value"
 
-  case class Ref(entryRef: Entry.Ref, attributeRef: Attribute.Ref, id: String) extends ObjectRef with LocamanObjectRef {
+  case class Ref(entryRef: Entry.Ref, attributeRef: Attribute.Ref, sequenceNr: Long) extends ObjectRef with LocamanObjectRef {
     override final val parents = Seq(entryRef, attributeRef)
     override final val directory = AttributeValue.directory
+    override final val id = String.valueOf(sequenceNr)
   }
 
   case class Data(ref: Ref, value: ByteString) extends AttributeValue
