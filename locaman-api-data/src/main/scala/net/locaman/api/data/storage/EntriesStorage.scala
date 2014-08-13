@@ -1,12 +1,12 @@
 package net.locaman.api.data.storage
 
 import net.locaman.api.data.core.QueryableStorage
+import net.locaman.api.data.core.QueryableStorageCompanion
 import net.locaman.api.data.core.Storage
-import net.locaman.api.data.core.StorageCompanion
 import net.locaman.api.data.objects.Entry
 import net.locaman.api.data.objects.EntryType
 
-object EntriesStorage extends StorageCompanion {
+object EntriesStorage extends QueryableStorageCompanion {
   case class Query(entryType: Option[EntryType.Ref])
 
   class QueryBuilder(val query: Query) extends IQueryBuilder {

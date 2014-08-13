@@ -1,14 +1,5 @@
 package net.locaman.api.data.core
 
-trait StorageCompanion {
-  type Query
-  type QueryBuilder <: IQueryBuilder
-
-  trait IQueryBuilder {
-    def query: Query
-  }
-}
-
 trait Storage[TRef <: ObjectRef, TData <: ObjectData[TRef, _]] {
   def add(data: TData): Unit
 
@@ -20,9 +11,18 @@ trait Storage[TRef <: ObjectRef, TData <: ObjectData[TRef, _]] {
 
 }
 
+trait QueryableStorageCompanion {
+  type Query
+  type QueryBuilder <: IQueryBuilder
+
+  trait IQueryBuilder {
+    def query: Query
+  }
+}
+
 trait QueryableStorage[TData <: ObjectData[_, _]] {
   this: Storage[_, TData] =>
-  val companion: StorageCompanion
+  val companion: QueryableStorageCompanion
   protected def newQueryBuilder: companion.QueryBuilder
 
   def query(query: companion.Query): Seq[TData]

@@ -3,14 +3,14 @@ package net.locaman.api.data.storage
 import org.joda.time.Instant
 
 import net.locaman.api.data.core.QueryableStorage
+import net.locaman.api.data.core.QueryableStorageCompanion
 import net.locaman.api.data.core.Storage
-import net.locaman.api.data.core.StorageCompanion
 import net.locaman.api.data.objects.Attribute
 import net.locaman.api.data.objects.Commit
 import net.locaman.api.data.objects.Commiter
 import net.locaman.api.data.objects.Entry
 
-object CommitsStorage extends StorageCompanion {
+object CommitsStorage extends QueryableStorageCompanion {
   case class Query(
     entry: Option[Entry.Ref],
     attribute: Option[Attribute.Ref],

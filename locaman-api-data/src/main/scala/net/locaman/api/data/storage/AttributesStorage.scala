@@ -1,12 +1,12 @@
 package net.locaman.api.data.storage
 
 import net.locaman.api.data.core.QueryableStorage
+import net.locaman.api.data.core.QueryableStorageCompanion
 import net.locaman.api.data.core.Storage
-import net.locaman.api.data.core.StorageCompanion
 import net.locaman.api.data.objects.Attribute
 import net.locaman.api.valuetype.ValueType
 
-object AttributesStorage extends StorageCompanion {
+object AttributesStorage extends QueryableStorageCompanion {
   case class Query(valueType: Option[ValueType])
 
   class QueryBuilder(val query: Query) extends IQueryBuilder {
