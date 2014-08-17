@@ -12,7 +12,7 @@ object Commiter {
     override final val directory = Commiter.directory
   }
 
-  case class Data(ref: Ref) extends Commiter
+  case class Data() extends Commiter
 }
 
 trait Commiter extends ObjectData[Commiter.Ref, HNil] {

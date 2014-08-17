@@ -15,11 +15,15 @@ object AttributeValue {
     override final val id = String.valueOf(sequenceNr)
   }
 
-  case class Data(ref: Ref, value: ByteString) extends AttributeValue
+  case class Data(entryRef: Entry.Ref, attributeRef: Attribute.Ref, value: ByteString) extends AttributeValue
 }
 
-trait AttributeValue extends ObjectData[AttributeValue.Ref, ByteString :: HNil] {
+trait AttributeValue extends ObjectData[AttributeValue.Ref, Entry.Ref :: Attribute.Ref :: ByteString :: HNil] {
+  def entryRef: Entry.Ref
+
+  def attributeRef: Attribute.Ref
+
   def value: ByteString
 
-  override final def toHList = value :: HNil
+  override final def toHList = entryRef :: attributeRef :: value :: HNil
 }

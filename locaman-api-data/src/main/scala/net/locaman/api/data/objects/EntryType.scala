@@ -12,7 +12,7 @@ object EntryType {
     override final val directory = EntryType.directory
   }
 
-  case class Data(ref: Ref) extends EntryType
+  case class Data() extends EntryType
 }
 
 trait EntryType extends ObjectData[EntryType.Ref, HNil] {

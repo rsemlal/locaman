@@ -9,24 +9,25 @@ import org.joda.time.Instant
 object Commit {
   final val directory = "commit"
 
-  object CommitType extends Enumeration {
-    type CommitType = Value
-    val Set, Unset = Value
-  }
-
   case class Ref(valueRef: AttributeValue.Ref, sequenceNr: Int) extends ObjectRef with LocamanObjectRef {
     override final val parents = Seq(valueRef)
     override final val directory = Commit.directory
     override final val id = String.valueOf(sequenceNr)
   }
 
-  case class Data(ref: Ref, commitType: CommitType.CommitType, commiter: Commiter.Ref, timestamp: Instant) extends Commit
+  case class Data(valueRef: AttributeValue.Ref, commitType: CommitType.CommitType, commiter: Commiter.Ref, timestamp: Instant) extends Commit
+
+  object CommitType extends Enumeration {
+    type CommitType = Value
+    val Set, Unset = Value
+  }
 }
 
-trait Commit extends ObjectData[Commit.Ref, Commit.CommitType.CommitType :: Commiter.Ref :: Instant :: HNil] {
+trait Commit extends ObjectData[Commit.Ref, AttributeValue.Ref :: Commit.CommitType.CommitType :: Commiter.Ref :: Instant :: HNil] {
+  def valueRef: AttributeValue.Ref
   def commitType: Commit.CommitType.CommitType
   def commiter: Commiter.Ref
   def timestamp: Instant
 
-  override final def toHList = commitType :: commiter :: timestamp :: HNil
+  override final def toHList = valueRef :: commitType :: commiter :: timestamp :: HNil
 }
