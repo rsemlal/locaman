@@ -12,10 +12,12 @@ object EntryType {
     override final val directory = EntryType.directory
   }
 
-  case class Data() extends EntryType
+  case class Data() extends ObjectData[EntryType.Ref, HNil] {
+
+    override final def toHList = HNil
+  }
 }
 
-trait EntryType extends ObjectData[EntryType.Ref, HNil] {
+trait EntryType {
 
-  override final def toHList = HNil
 }

@@ -2,7 +2,7 @@ package net.locaman.api.data.objects
 
 import net.locaman.api.data.core.ObjectData
 import net.locaman.api.data.core.ObjectRef
-import shapeless.{:: => :: }
+import shapeless.{ :: => :: }
 import shapeless.HNil
 
 object Entry {
@@ -13,12 +13,12 @@ object Entry {
     override final val directory = Entry.directory
   }
 
-  case class Data(entryTypeRef: EntryType.Ref) extends Entry
+  case class Data(
+    entryTypeRef: EntryType.Ref) extends ObjectData[Entry.Ref, EntryType.Ref :: HNil] {
+
+    override final def toHList = entryTypeRef :: HNil
+  }
 }
 
-trait Entry extends ObjectData[Entry.Ref, EntryType.Ref :: HNil] {
-
-  def entryTypeRef: EntryType.Ref
-
-  override final def toHList = entryTypeRef :: HNil
+trait Entry {
 }

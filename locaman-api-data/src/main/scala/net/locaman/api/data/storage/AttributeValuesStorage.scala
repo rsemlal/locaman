@@ -16,7 +16,7 @@ object AttributeValuesStorage extends QueryableStorageCompanion {
   }
 }
 
-trait AttributeValuesStorage extends Storage[AttributeValue.Ref, AttributeValue] with QueryableStorage[AttributeValue] {
+trait AttributeValuesStorage extends Storage[AttributeValue.Ref, AttributeValue.Data] with QueryableStorage[AttributeValue.Data] {
   import AttributeValuesStorage._
 
   final val companion = AttributeValuesStorage

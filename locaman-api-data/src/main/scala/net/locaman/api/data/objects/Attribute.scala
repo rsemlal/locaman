@@ -15,13 +15,11 @@ object Attribute {
     override final val directory = Attribute.directory
   }
 
-  case class Data(id: String, valueType: ValueType) extends Attribute
+  case class Data(id: String, valueType: ValueType) extends ObjectData[Attribute.Ref, String :: ValueType :: HNil] {
+
+    override final def toHList = id :: valueType :: HNil
+  }
 }
 
-trait Attribute extends ObjectData[Attribute.Ref, String :: ValueType :: HNil] {
-  def id: String
-
-  def valueType: ValueType
-
-  override final def toHList = id :: valueType :: HNil
+trait Attribute {
 }

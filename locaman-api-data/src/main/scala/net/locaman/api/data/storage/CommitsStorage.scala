@@ -28,7 +28,7 @@ object CommitsStorage extends QueryableStorageCompanion {
 
 }
 
-trait CommitsStorage extends Storage[Commit.Ref, Commit] with QueryableStorage[Commit] {
+trait CommitsStorage extends Storage[Commit.Ref, Commit.Data] with QueryableStorage[Commit.Data] {
   import CommitsStorage._
 
   final val companion = CommitsStorage

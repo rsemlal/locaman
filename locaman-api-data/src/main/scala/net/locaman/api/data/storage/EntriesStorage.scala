@@ -14,7 +14,7 @@ object EntriesStorage extends QueryableStorageCompanion {
   }
 }
 
-trait EntriesStorage extends Storage[Entry.Ref, Entry] with QueryableStorage[Entry] {
+trait EntriesStorage extends Storage[Entry.Ref, Entry.Data] with QueryableStorage[Entry.Data] {
   import EntriesStorage._
   final val companion = EntriesStorage
   protected final def newQueryBuilder = new QueryBuilder(Query(None))

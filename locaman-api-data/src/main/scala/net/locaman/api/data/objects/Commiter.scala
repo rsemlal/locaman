@@ -12,10 +12,12 @@ object Commiter {
     override final val directory = Commiter.directory
   }
 
-  case class Data() extends Commiter
+  case class Data() extends ObjectData[Commiter.Ref, HNil] {
+
+    override final def toHList = HNil
+  }
 }
 
-trait Commiter extends ObjectData[Commiter.Ref, HNil] {
+trait Commiter {
 
-  override final def toHList = HNil
 }

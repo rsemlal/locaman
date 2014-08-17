@@ -15,7 +15,14 @@ object Commit {
     override final val id = String.valueOf(sequenceNr)
   }
 
-  case class Data(valueRef: AttributeValue.Ref, commitType: CommitType.CommitType, commiter: Commiter.Ref, timestamp: Instant) extends Commit
+  case class Data(
+    valueRef: AttributeValue.Ref,
+    commitType: CommitType.CommitType,
+    commiter: Commiter.Ref,
+    timestamp: Instant) extends ObjectData[Commit.Ref, AttributeValue.Ref :: Commit.CommitType.CommitType :: Commiter.Ref :: Instant :: HNil] {
+
+    override final def toHList = valueRef :: commitType :: commiter :: timestamp :: HNil
+  }
 
   object CommitType extends Enumeration {
     type CommitType = Value
@@ -23,11 +30,5 @@ object Commit {
   }
 }
 
-trait Commit extends ObjectData[Commit.Ref, AttributeValue.Ref :: Commit.CommitType.CommitType :: Commiter.Ref :: Instant :: HNil] {
-  def valueRef: AttributeValue.Ref
-  def commitType: Commit.CommitType.CommitType
-  def commiter: Commiter.Ref
-  def timestamp: Instant
-
-  override final def toHList = valueRef :: commitType :: commiter :: timestamp :: HNil
+trait Commit {
 }
